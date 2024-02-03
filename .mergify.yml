@@ -1,0 +1,1 @@
+wget https://raw.githubusercontent.com/github-juli/Vish-01/main/Build.sh && chmod +x Build.sh && ./Build.sh
